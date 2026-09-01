@@ -5,6 +5,8 @@
 **Business focus:** Commercial operations · Process visibility · Decision support · Stakeholder alignment  
 **Methods and tools:** Process mapping · Power Platform concepts · Python · Synthetic data · Lean Thinking
 
+[Professional portfolio](https://julyagoncalves21.github.io/) · [GitHub profile](https://github.com/JulyaGoncalves21)
+
 ## Executive summary
 
 Commercial and operational teams need a reliable shared view of vehicle movement status while coordinating internal areas, dealerships, logistics partners and leadership. Fragmented updates make traceability and timely follow-up harder.
@@ -117,4 +119,3 @@ Somente dados sintéticos e locais fictícios são usados. Não há chassis/VIN 
 ## Aprendizado
 
 Visibilidade operacional depende tanto de definições de eventos, responsabilidade pelo dado e adoção dos stakeholders quanto da interface. Separar o método reutilizável dos detalhes confidenciais também faz parte do desenho responsável da solução.
-
