@@ -1,52 +1,44 @@
 # Chassis Operations Platform
 
-A sanitized portfolio adaptation of an operational solution that combines vehicle-location lookup, event history, transfer context, list synchronization and dispatch-document support.
+> Conceptual, sanitized case study about operational visibility and stakeholder coordination. It is not an employer system, product export or production implementation.
 
-## Problem
+**Business focus:** Commercial operations · Process visibility · Decision support · Stakeholder alignment  
+**Methods and tools:** Process mapping · Power Platform concepts · Python · Synthetic data · Lean Thinking
 
-Vehicle location and movement context were spread across operational sources. Users needed a fast lookup surface while background processes had to normalize snapshots, plan list changes, preserve history and avoid unsafe bulk updates.
+## Executive summary
 
-## Solution
+Commercial and operational teams need a reliable shared view of vehicle movement status while coordinating internal areas, dealerships, logistics partners and leadership. Fragmented updates make traceability and timely follow-up harder.
 
-The private solution combines a Power Apps Canvas application, a list synchronization service, an event-history layer, transfer data and document automation. This public repository preserves the proven component boundaries but replaces every source with local synthetic CSV files. It can build a dry-run plan; it cannot authenticate or write externally.
+This repository demonstrates a transferable approach to that problem: define a current-state registry, preserve an event history, relate transfer context and create a simple lookup experience. Every record, name, date and location is fictional. The executable code is local-only and cannot authenticate or write to an external system.
 
-## Architecture
+## Business challenge
 
-```text
-Incoming snapshot ─> normalize ─> compare ─> guarded dry-run plan
-                                         ├─> location registry
-                                         └─> event history
+- Status information can be distributed across people and routines.
+- Different stakeholders need the same event definitions and current state.
+- Informal follow-up makes ownership and traceability harder.
+- A useful interface depends on data governance, not only screen design.
 
-Transfer requests ──────────────────────────> Power Apps views
-Dispatch document metadata ─────────────────> Power Apps views
-```
+## My contribution
 
-See [solution overview](docs/solution-overview.md), [data model](docs/data-model.md) and [security boundaries](docs/security-boundaries.md).
+The case study reflects work across business framing, requirements understanding, process visibility and solution development using automation-oriented tools. The public version documents the problem-solving method—not any confidential implementation.
 
-## Main components
+## Conceptual solution
 
-- **Chassis Tracker App:** documented Canvas app for search, status, location and history.
-- **List Sync Service:** local normalization, comparison, dry-run planning and guardrail checks.
-- **Event History Layer:** derives auditable events from planned changes.
-- **Transfer Data Integration:** models origin and destination requests.
-- **Dispatch Document Automation:** produces explicitly marked synthetic document text.
+1. Receive a synthetic snapshot of current vehicle states.
+2. Normalize and compare the snapshot with a synthetic registry.
+3. Apply guardrails before producing a reviewable dry-run plan.
+4. Derive an immutable conceptual event history from relevant changes.
+5. Combine current state, event history and transfer context in a documented lookup layer.
 
-## Repository structure
+![Conceptual architecture showing synthetic inputs, validation, current state, event history and a shared operational view](docs/architecture.svg)
 
-```text
-src/chassis_platform/  local-only Python services
-tests/                 pure behavior tests
-sample-data/           invented snapshots and transfers
-power-apps/            sanitized formulas and screen model
-docs/                  architecture, data and security notes
-site/                  GitHub Pages case study
-```
+The [solution overview](docs/solution-overview.md), [data dictionary](docs/data-dictionary.md) and [security boundaries](docs/security-boundaries.md) describe the model in more detail.
 
-## Technologies
+## Business value
 
-Python standard library, CSV/JSON, pytest, ruff, Power Fx documentation, semantic HTML/CSS and GitHub Actions. SharePoint, browser automation, Power Apps connections and external spreadsheet sources are private and not implemented here.
+The approach creates a common view of movement status, reduces dependence on informal status checks and supports better-informed coordination. This public demonstration claims no operational performance metric.
 
-## Run with synthetic data
+## Safe public demonstration
 
 ```bash
 python -m venv .venv
@@ -54,35 +46,75 @@ python -m pip install -e .
 python -m chassis_platform.cli
 ```
 
-The command writes a local dry-run plan under `output/`, which Git ignores. It performs zero external writes.
+The command reads only the CSV fixtures under `sample-data/` and writes a local dry-run plan under ignored `output/`. It performs zero external writes.
 
-## Security and anonymization
+## Repository map
 
-Identifiers use the `DEMO` prefix. Locations, dates and requests are fictional. Original MSAPP files, spreadsheets, PDFs, outputs, profiles, logs, executables, credentials, URLs and list names are excluded. See [PUBLIC_RELEASE_AUDIT.md](PUBLIC_RELEASE_AUDIT.md).
+```text
+src/chassis_platform/  local-only normalization, planning and event logic
+tests/                 behavior tests
+sample-data/           invented vehicle and transfer records
+power-apps/            generic, non-connected interface documentation
+docs/                  architecture, dictionary and security boundaries
+site/                  static case-study page built from synthetic content
+```
 
-## Limitations of the public version
+## Security and limitations
 
-- No MSAPP is shipped and the generic Power Fx is not import-ready.
-- The production SharePoint and browser adapters remain private.
-- Document output is plain synthetic text, not an original corporate template.
-- Dry-run planning demonstrates control flow but does not publish changes.
-- No operational performance claims or metrics are presented.
+- No real VIN/chassis number, plate, route, person, customer or operational volume.
+- No MSAPP, corporate adapter, internal schema, URL, list name, tenant ID or credential.
+- No original spreadsheet, PDF, screenshot, document template, log or output.
+- Generic Power Fx is illustrative and cannot connect to a private environment.
+- The public data model is deliberately simplified and is not deployment-ready.
 
-## Technical decisions
+Read [SECURITY.md](SECURITY.md) and [PUBLIC_RELEASE_AUDIT.md](PUBLIC_RELEASE_AUDIT.md) before reuse.
 
-The local adapter makes the safe execution boundary visible. Sync planning is pure and reviewable; guardrails run before export; history is derived from changes; document generation is separate from list synchronization. External implementation belongs behind adapters that are deliberately absent.
+## What I learned
 
-## Next steps
+Operational visibility depends as much on event definitions, ownership and stakeholder adoption as it does on the interface. Separating the reusable method from confidential implementation details is part of responsible solution design.
 
-- Add synthetic XLSX samples when the controlled workbook tool is available.
-- Add screenshots recreated entirely from synthetic content.
-- Define an optional connector protocol without publishing an environment-specific client.
+---
 
-## Author
+# Português
 
-Portfolio project maintained by the repository owner.
+## Plataforma de Operações de Chassis
 
-## Resumo em português
+> Estudo de caso conceitual e sanitizado sobre visibilidade operacional e coordenação de stakeholders. Não é um sistema corporativo, exportação de produto ou implementação de produção.
 
-Versão pública e sanitizada de uma solução de localização de chassis, histórico de eventos, transferências, sincronização de listas e documentos. O exemplo executa apenas com CSVs fictícios, gera um plano local de dry-run e não possui credenciais nem capacidade de escrita corporativa.
+## Resumo executivo
+
+Equipes comerciais e operacionais precisam de uma visão compartilhada e confiável do status de movimentação de veículos enquanto coordenam áreas internas, concessionárias, parceiros logísticos e liderança. Atualizações fragmentadas dificultam rastreabilidade e acompanhamento no momento certo.
+
+Este repositório demonstra uma abordagem transferível para o problema: definir um registro de estado atual, preservar histórico de eventos, relacionar contexto de transferências e criar uma experiência simples de consulta. Todos os registros, nomes, datas e locais são fictícios. O código executável funciona somente de forma local e não pode autenticar ou escrever em sistemas externos.
+
+## Desafio de negócio
+
+- Informações de status podem ficar distribuídas entre pessoas e rotinas.
+- Stakeholders diferentes precisam das mesmas definições de evento e estado atual.
+- Acompanhamento informal dificulta responsabilidade e rastreabilidade.
+- Uma boa interface depende de governança de dados, não apenas do desenho de telas.
+
+## Minha contribuição
+
+O estudo reflete atuação no enquadramento do problema de negócio, entendimento de requisitos, visibilidade do processo e desenvolvimento de solução com ferramentas de automação. A versão pública registra o método de resolução — não uma implementação confidencial.
+
+## Solução conceitual
+
+1. Receber um recorte sintético do estado atual dos veículos.
+2. Normalizar e comparar o recorte com um registro fictício.
+3. Aplicar controles antes de produzir um plano de simulação revisável.
+4. Derivar um histórico conceitual e imutável dos eventos relevantes.
+5. Combinar estado atual, histórico e contexto de transferências em uma camada documentada de consulta.
+
+## Valor de negócio
+
+A abordagem cria uma visão comum do status de movimentação, reduz dependência de consultas informais e apoia uma coordenação mais bem informada. Esta demonstração pública não reivindica métricas operacionais.
+
+## Segurança e limitações
+
+Somente dados sintéticos e locais fictícios são usados. Não há chassis/VIN real, placa, rota, pessoa, cliente, volume operacional, MSAPP, adaptador corporativo, esquema interno, URL, nome de lista, identificador de ambiente, credencial, planilha, PDF ou screenshot original. O modelo é simplificado e não está pronto para implantação.
+
+## Aprendizado
+
+Visibilidade operacional depende tanto de definições de eventos, responsabilidade pelo dado e adoção dos stakeholders quanto da interface. Separar o método reutilizável dos detalhes confidenciais também faz parte do desenho responsável da solução.
 
