@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Technical case study of a sanitized chassis operations platform.">
+  <title>Chassis Operations Platform</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <header><nav aria-label="Primary"><a href="#system">System</a><a href="#modules">Modules</a><a href="#limits">Limits</a></nav><p class="eyebrow">Operational case study · synthetic data</p><h1>Chassis Operations Platform</h1><p class="lead">A clear operating view of vehicle location, event history, transfers and dispatch documents, supported by guarded data synchronization.</p></header>
+  <main id="content">
+    <section><h2>Why the solution exists</h2><p>Location and movement context were distributed across sources. The solution gives operations a lookup surface while separating ingestion, change planning, event history and documents into distinct components.</p></section>
+    <section id="system"><h2>System flow</h2><div class="flow" role="img" aria-label="An incoming vehicle snapshot is normalized and compared to create a guarded plan. Current state and event history support the Power Apps lookup along with transfers and documents."><div>Incoming snapshot</div><i>→</i><div>Normalize & compare</div><i>→</i><div>Guarded plan</div><i>→</i><div>Location + history</div><i>→</i><div>Canvas app</div></div></section>
+    <section id="modules"><h2>Connected modules</h2><div class="grid"><article><span>01</span><h3>Chassis Tracker App</h3><p>Search, current status, location and chronological events.</p></article><article><span>02</span><h3>List Sync Service</h3><p>Normalize records and prepare auditable create, update, keep or deactivate actions.</p></article><article><span>03</span><h3>Event History</h3><p>Preserve the meaning and time of relevant changes.</p></article><article><span>04</span><h3>Transfer Integration</h3><p>Relate a vehicle to an origin, destination and request state.</p></article><article><span>05</span><h3>Document Automation</h3><p>Keep dispatch-document handling separate from synchronization.</p></article></div></section>
+    <section><h2>Safe public run</h2><div class="facts"><div><b>Local only</b><span>CSV adapters</span></div><div><b>Dry-run</b><span>reviewable plan</span></div><div><b>No secrets</b><span>blank configuration</span></div></div><p>The included records and counts are demonstration fixtures, not operational results.</p></section>
+    <section id="limits"><h2>What remains private</h2><ul><li>MSAPP packages and environment/tenant metadata.</li><li>SharePoint writers, browser automation and credential handling.</li><li>Real chassis, plates, routes, people, customers and documents.</li><li>Execution evidence, outputs, profiles, logs and backups.</li></ul></section>
+  </main><footer><p>Sanitized portfolio adaptation. Corporate systems and operational data are not included.</p></footer>
+</body>
+</html>
+
