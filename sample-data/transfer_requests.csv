@@ -1,0 +1,4 @@
+request_id,vehicle_id,origin,destination,status
+TR-001,DEMO00000002,Inspection Bay,Dispatch Zone,Planned
+TR-002,DEMO00000004,Receiving Area,South Yard,Requested
+

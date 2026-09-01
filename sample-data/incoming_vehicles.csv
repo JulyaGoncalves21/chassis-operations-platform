@@ -1,0 +1,7 @@
+vehicle_id,location,status,updated_at
+DEMO00000001,North Yard,Available,2026-06-02T08:00:00Z
+DEMO00000002,Dispatch Zone,Ready,2026-06-02T08:05:00Z
+DEMO00000003,South Yard,Available,2026-06-02T08:10:00Z
+DEMO00000004,Receiving Area,Received,2026-06-02T08:15:00Z
+DEMO00000006,North Yard,Available,2026-06-02T08:20:00Z
+
