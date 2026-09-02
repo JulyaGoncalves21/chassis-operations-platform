@@ -1,4 +1,4 @@
-# Chassis Operations Platform
+# Vehicle Operations Traceability Platform
 
 > Conceptual, sanitized case study about operational visibility and stakeholder coordination. It is not an employer system, product export or production implementation.
 
